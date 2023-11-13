@@ -1,7 +1,7 @@
 const playerText = document.querySelector("#playerText");
-const computerText = document.querySelector("#playerText");
-const resultText = document.querySelector("#playerText");
-const choiceBtns = document.querySelector("#choiceBtns");
+const computerText = document.querySelector("#computerText");
+const resultText = document.querySelector("#resultText");
+const choiceBtns = document.querySelectorAll("#choiceBtn");
 
 let player;
 let computer;
@@ -9,15 +9,21 @@ let result;
 
 choiceBtns.forEach(button => button.addEventListener("click", () => {
 
+	// console.log("A button pressed!");
 	player = button.textContent;
 	computerTurn();
+	playerText.textContent = `Player: ${player}`;
+	computerText.textContent = `Computer: ${computer}`;
+	resultText.textContent = checkWinner();
 		
 }));
 
 
 function computerTurn(){
 
-	const randNum = math.floor(math.random() * 3) + 1;
+	const randNum = Math.floor(Math.random() * 3) + 1;
+
+	console.log(randNum);
 
 	switch(randNum){
 
@@ -34,3 +40,36 @@ function computerTurn(){
 	  	break;
 	}
 }
+
+
+
+
+function checkWinner(){
+	if (player == computer) {
+		return "Draw! ";
+	}
+	else if (computer == "ROCK") {
+		return (player == "PAPER") ? "You Win! "  : "You Lose! "
+	}
+	else if (computer == "PAPER") {
+		return (player == "SCISSORS") ? "You Win! "  : "You Lose! "
+	}
+	else if (computer == "SCISSORS") {
+		return (player == "ROCK") ? "You Win! "  : "You Lose! "
+	}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
